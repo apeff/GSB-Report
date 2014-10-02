@@ -18,13 +18,13 @@
             </thead>
             {% for drug in drugs %}
                 <tr>
-                    <td><a href="/drugs/{{ drug.id }}">{{ drug.tradeName }}</a></td>
-                    <td>{{ drug.family.name }}</td>
+                    <td><a href="/practitioners/{{ practitioners.id }}">{{ practitioners.tradeName }}</a></td>
+                    <td>{{ practitioners.practitioner.name }}</td>
                 </tr>
             {% endfor %}
         </table>
     </div>
 {% else %}
-    <div class="alert alert-warning">Aucun médicament trouvé.</div>
+    <div class="alert alert-warning">Aucun practitien trouvé.</div>
 {% endif %}   
 {% endblock %}
