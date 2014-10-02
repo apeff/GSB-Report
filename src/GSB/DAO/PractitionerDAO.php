@@ -2,17 +2,17 @@
 
 namespace GSB\DAO;
 
-use GSB\Domain\Drug;
+use GSB\Domain\Practitioner;
 
-class DrugDAO extends DAO
+class PractitionerDAO extends DAO
 {
     /**
      * @var \GSB\DAO\FamilyDAO
      */
-    private $familyDAO;
+    private $PractitionerTypeDAO;
 
-    public function setFamilyDAO($familyDAO) {
-        $this->familyDAO = $familyDAO;
+    public function setPractitionerTypeDAO($PractitionerTypeAO) {
+        $this->PractitionerTypeDAO = $PractitionerTypeDAO;
     }
 
     /**
@@ -27,7 +27,7 @@ class DrugDAO extends DAO
         // Converts query result to an array of domain objects
         $practitioners = array();
         foreach ($result as $row) {
-            $practitionerId = $row['drug_id'];
+            $practitionerId = $row['practitioner_id'];
             $practitioners[$practitionerId] = $this->buildDomainObject($row);
         }
         return $practitioners;
@@ -87,9 +87,9 @@ class DrugDAO extends DAO
         $practitioner->setFirst_Name($row['trade_name']);
         $practitioner->setAdress($row['content']);
         $practitioner->setZip_code($row['effects']);
-        $practitioner->setContraindication($row['contraindication']);
-        $practitioner->setSamplePrice($row['sample_price']);
-        $practitioner->setFamily($family);
-        return $drug;
+        $practitioner->setCity($row['contraindication']);
+        $practitioner->setNotoriety_coefficient($row['sample_price']);
+        $practitioner->setPractitionerType($type);
+        return $practitioner;
     }
 }

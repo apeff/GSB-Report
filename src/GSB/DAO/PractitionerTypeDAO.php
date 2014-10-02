@@ -4,7 +4,7 @@ namespace GSB\DAO;
 
 use GSB\Domain\PractitionerType;
 
-class FamilyDAO extends DAO
+class PractitionerTypeDAO extends DAO
 {
     /**
      * Returns the list of all families, sorted by name.
@@ -52,6 +52,6 @@ class FamilyDAO extends DAO
         $type= new practitioner_type();
         $type->setId($row['practitioner_type_id']);
         $type->setName($row['practitioner_type_name']);
-        return $practitioner;
+        return $type;
     }
 }

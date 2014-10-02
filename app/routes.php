@@ -34,11 +34,11 @@ $app->post('/drugs/results/', function(Request $request) use ($app) {
 
 // Details for a practitioner
 $app->get('/practitioner/{id}', function($id) use ($app) {
-    $drug = $app['dao.practitioner']->find($id);
+    $practitioner = $app['dao.practitioner']->find($id);
     return $app['twig']->render('practitioners.html.twig', array('practitioner' => $practitioner));
 });
 // List of all drugs
 $app->get('/practitioners/', function() use ($app) {
-    $drugs = $app['dao.practitioner']->findAll();
+    $practitioners = $app['dao.practitioner']->findAll();
     return $app['twig']->render('practitioners.html.twig', array('practitioners' => $practitioners));
 });
