@@ -12,16 +12,16 @@ class FamilyDAO extends DAO
      * @return array The list of all families.
      */
     public function findAll() {
-        $sql = "select * from family order by family_name";
+        $sql = "select * from practitioner_type order by practitioner_type_name";
         $result = $this->getDb()->fetchAll($sql);
         
         // Converts query result to an array of domain objects
         $families = array();
         foreach ($result as $row) {
-            $familyId = $row['family_id'];
-            $families[$familyId] = $this->buildDomainObject($row);
+            $typeId = $row['practitioner_type_id'];
+            $types[$typeId] = $this->buildDomainObject($row);
         }
-        return $families;
+        return $types;
     }
 
     /**
@@ -32,7 +32,7 @@ class FamilyDAO extends DAO
      * @return \GSB\Domain\Family|throws an exception if no family is found.
      */
     public function find($id) {
-        $sql = "select * from family where family_id=?";
+        $sql = "select * from practitioner_type where practitioner_type_id=?";
         $row = $this->getDb()->fetchAssoc($sql, array($id));
 
         if ($row)
@@ -49,9 +49,9 @@ class FamilyDAO extends DAO
      * @return \GSB\Domain\Family
      */
     protected function buildDomainObject($row) {
-        $family = new Family();
-        $family->setId($row['family_id']);
-        $family->setName($row['family_name']);
-        return $family;
+        $type= new practitioner_type();
+        $type->setId($row['practitioner_type_id']);
+        $type->setName($row['practitioner_type_name']);
+        return $practitioner;
     }
 }

@@ -21,16 +21,16 @@ class DrugDAO extends DAO
      * @return array The list of all drugs.
      */
     public function findAll() {
-        $sql = "select * from drug order by trade_name";
+        $sql = "select * from practitioner order by practitioner_name";
         $result = $this->getDb()->fetchAll($sql);
         
         // Converts query result to an array of domain objects
-        $drugs = array();
+        $practitioners = array();
         foreach ($result as $row) {
-            $drugId = $row['drug_id'];
-            $drugs[$drugId] = $this->buildDomainObject($row);
+            $practitionerId = $row['drug_id'];
+            $practitioners[$practitionerId] = $this->buildDomainObject($row);
         }
-        return $drugs;
+        return $practitioners;
     }
 
     /**
@@ -40,17 +40,17 @@ class DrugDAO extends DAO
      *
      * @return array The list of drugs.
      */
-    public function findAllByFamily($familyId) {
-        $sql = "select * from drug where family_id=? order by trade_name";
-        $result = $this->getDb()->fetchAll($sql, array($familyId));
+    public function findAllByFamily($practitionerId) {
+        $sql = "select * from practitioner where practitioner_id=? order by practitioner_name";
+        $result = $this->getDb()->fetchAll($sql, array($practitionerId));
         
         // Convert query result to an array of domain objects
-        $drugs = array();
+        $practitioners = array();
         foreach ($result as $row) {
-            $drugId = $row['drug_id'];
-            $drugs[$drugId] = $this->buildDomainObject($row);
+            $practitionerId = $row['drug_id'];
+            $practitioners[$practitionerId] = $this->buildDomainObject($row);
         }
-        return $drugs;
+        return $practitioners;
     }
 
     /**
@@ -61,7 +61,7 @@ class DrugDAO extends DAO
      * @return \GSB\Domain\Drug|throws an exception if no drug is found.
      */
     public function find($id) {
-        $sql = "select * from drug where drug_id=?";
+        $sql = "select * from practitioner where practitioner_id=?";
         $row = $this->getDb()->fetchAssoc($sql, array($id));
 
         if ($row)
@@ -78,18 +78,18 @@ class DrugDAO extends DAO
      * @return \GSB\Domain\Drug
      */
     protected function buildDomainObject($row) {
-        $familyId = $row['family_id'];
-        $family = $this->familyDAO->find($familyId);
+        $familyId = $row['practitioner_type_id'];
+        $type = $this->practitionerTypeDAO->find($typeId);
 
-        $drug = new Drug();
-        $drug->setId($row['drug_id']);
-        $drug->setCopyrighting($row['copyrighting']);
-        $drug->setTradeName($row['trade_name']);
-        $drug->setContent($row['content']);
-        $drug->setEffects($row['effects']);
-        $drug->setContraindication($row['contraindication']);
-        $drug->setSamplePrice($row['sample_price']);
-        $drug->setFamily($family);
+        $practitioner= new Practitioner();
+        $practitioner->setId($row['practitioner_id']);
+        $practitioner->setType_id($row['practitioner_type_id']);
+        $practitioner->setFirst_Name($row['trade_name']);
+        $practitioner->setAdress($row['content']);
+        $practitioner->setZip_code($row['effects']);
+        $practitioner->setContraindication($row['contraindication']);
+        $practitioner->setSamplePrice($row['sample_price']);
+        $practitioner->setFamily($family);
         return $drug;
     }
 }
