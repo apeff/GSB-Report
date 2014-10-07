@@ -6,6 +6,12 @@ ErrorHandler::register();
 use Symfony\Component\Debug\ExceptionHandler;
 ExceptionHandler::register();
 
+
+
+
+
+
+
 // Register service providers.
 $app->register(new Silex\Provider\DoctrineServiceProvider());
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
