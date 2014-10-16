@@ -5,7 +5,7 @@
 
 {% block content %}
 <h2 class="text-center">{{ block('title') }}</h2>
-{% if drugs %}
+{% if visitReports %}
     <div class="table-responsive">
         <table class="table table-hover table-condensed">
             <thead>
@@ -16,9 +16,9 @@
                     <th>Motif</th>
                 </tr>
             </thead>
-            {% for drug in drugs %}
+            {% for visitReport in visitReports %}
                 <tr>
-                    <td> {{ visitReports.date }}">{{ visitReports.practitioner.name }}</td>
+                    <td> {{ visitReports.reportingDate }}">{{ visitReport.practitioner.name }}</td>
                    
                 </tr>
             {% endfor %}
