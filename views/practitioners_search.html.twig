@@ -1,18 +1,18 @@
 {% extends "layout.html.twig" %}
-{% set drugMenu = true %}
+{% set practitionerMenu = true %}
 
-{% block title %}Recherche de practitiens{% endblock %}
+{% block title %}Recherche de praticien{% endblock %}
 
 {% block content %}
 <h2 class="text-center">{{ block('title') }}</h2>
 <div class="well">
-    <form class="form-horizontal" role="form" action="/drugs/results/" method="post">
+    <form class="form-horizontal" role="form" action="/practitioners/results/" method="post">
         <div class="form-group">
-            <label class="col-sm-2 col-sm-offset-1 control-label">Practitiens</label>
+            <label class="col-sm-2 col-sm-offset-1 control-label">Practicien</label>
             <div class="col-sm-7">
-                <select class="form-control" name="family">
-                    {% for practitioner in practitioners%}
-                        <option value="{{ practitioner.id }}">{{ practitioner.name }}</option>
+                <select class="form-control" name="practitionerType">
+                    {% for practitionerType in practitionerTypes %}
+                        <option value="{{ practitionerType.id }}">{{ practitionerType.name }}</option>
                     {% endfor %}
                 </select>
             </div>

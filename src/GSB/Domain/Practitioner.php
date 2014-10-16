@@ -1,81 +1,83 @@
 <?php
-
 namespace GSB\Domain;
 
-class Practitioner
-{
+class Practitioner {
+
+    //PROPERTIES
     private $id;
-    private $type_id;
+    private $typeId;
     private $name;
-    private $first_name;
-    private $adress;
-    private $zip_code;
+    private $firstName;
+    private $address;
+    private $zipCode;
     private $city;
-    private $notoriety_coefficient;
+    private $notorietyCoefficient;
     
-    public function getId() {
+    
+    // GETTERS/SETTERS
+    
+    
+     public function getId() {
         return $this->id;
     }
 
-    public function getType_id() {
-        return $this->type_id;
+    public function getTypeId() {
+        return $this->typeId;
     }
 
     public function getName() {
         return $this->name;
     }
 
-    public function getFirst_name() {
-        return $this->first_name;
+    public function getFirstName() {
+        return $this->firstName;
     }
 
-    public function getAdress() {
-        return $this->adress;
+    public function getAddress() {
+        return $this->address;
     }
 
-    public function getZip_code() {
-        return $this->zip_code;
+    public function getZipCode() {
+        return $this->zipCode;
     }
 
     public function getCity() {
         return $this->city;
     }
 
-    public function getNotoriety_coefficient() {
-        return $this->notoriety_coefficient;
+    public function getNotorietyCoefficient() {
+        return $this->notorietyCoefficient;
     }
 
     public function setId($id) {
         $this->id = $id;
     }
 
-    public function setType_id($type_id) {
-        $this->type_id = $type_id;
+    public function setTypeId($typeId) {
+        $this->typeId = $typeId;
     }
 
     public function setName($name) {
         $this->name = $name;
     }
 
-    public function setFirst_name($first_name) {
-        $this->first_name = $first_name;
+    public function setFirstName($firstName) {
+        $this->firstName = $firstName;
     }
 
-    public function setAdress($adress) {
-        $this->adress = $adress;
+    public function setAddress($address) {
+        $this->address = $address;
     }
 
-    public function setZip_code($zip_code) {
-        $this->zip_code = $zip_code;
+    public function setZipCode($zipCode) {
+        $this->zipCode = $zipCode;
     }
 
     public function setCity($city) {
         $this->city = $city;
     }
 
-    public function setNotoriety_coefficient($notoriety_coefficient) {
-        $this->notoriety_coefficient = $notoriety_coefficient;
+    public function setNotorietyCoefficient($notorietyCoefficient) {
+        $this->notorietyCoefficient = $notorietyCoefficient;
     }
-
- 
 }

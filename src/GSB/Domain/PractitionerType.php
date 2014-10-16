@@ -1,37 +1,38 @@
 <?php
 
 namespace GSB\Domain;
-
-class PractitionerType
+class PractitionerType 
 {
+    /**
+     * PractitionerType id.
+     *
+     * @var integer
+     */
+    private $id;
+    private $name;
+    private $place;
 
- private $id;
-  private $lib;
-   private $lieu;
-   
-       public function getId() {
+    public function getId() {
         return $this->id;
-    }
-
-    public function getLib() {
-        return $this->lib;
-    }
-
-    public function getLieu() {
-        return $this->lieu;
     }
 
     public function setId($id) {
         $this->id = $id;
     }
 
-    public function setLib($lib) {
-        $this->lib = $lib;
+    public function getName() {
+        return $this->name;
     }
 
-    public function setLieu($lieu) {
-        $this->lieu = $lieu;
+    public function setName($name) {
+        $this->name = $name;
     }
-   
+        
+    public function getPlace() {
+        return $this->$place;
+    }
+
+    public function setPlace($place) {
+        $this->place = $place;
+    }
 }
-   
