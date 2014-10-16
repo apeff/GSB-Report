@@ -36,7 +36,7 @@ return $practitionerDAO;
 
 $app['dao.visitReport'] = $app->share(function ($app) {
 $visitReportDAO = new GSB\DAO\VisitReportDAO($app['db']);
-$visitReportDAO->setPractitionnerDAO($app['dao.practitioner']);
+$visitReportDAO->setPractitionerDAO($app['dao.practitioner']);
 $visitReportDAO->setVisitorDAO($app['dao.visitor']);
 
 return $visitReportDAO;

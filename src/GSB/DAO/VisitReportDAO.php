@@ -7,14 +7,14 @@ use GSB\Domain\VisitReport;
 class VisitReportDAO extends DAO {
 
     private $visitorDAO;
-    private $practitionnerDAO;
+    private $practitionerDAO;
 
     public function setVisitorDAO($visitorDAO) {
         $this->visitorDAO = $visitorDAO;
     }
 
-    public function setPractitionnerDAO($practitionnerDAO) {
-        $this->practitionnerDAO = $practitionnerDAO;
+    public function setPractitionerDAO($practitionerDAO) {
+        $this->practitionerDAO = $practitionerDAO;
     }
 
     /**
@@ -37,16 +37,16 @@ class VisitReportDAO extends DAO {
 
     protected function buildDomainObject($row) {
 
-        $practitionerId = $row['practitioner_id '];
-        $practitioner = $this->practitionerDAO->find($practitionerId);
+        $practitioner = $row['practitioner_id'];
+        $practitioner = $this->practitionerDAO->find($practitioner);
 
-        $visitorId = $row['visitor_id'];
-        $visitor = $this->visitorDAO->find($visitorId);
+        $visitor = $row['visitor_id'];
+        $visitor = $this->visitorDAO->find($visitor);
 
         $visitReport = new VisitReport();
-        $visitReport->setPractitionerId($row['report_id']);
-        $visitReport->setName($practitioner);
-        $visitReport->setVisitorId($visitor);
+        $visitReport->setReportId($row['report_id']);
+        $visitReport->setPractitioner($practitioner);
+        $visitReport->setVisitor($visitor);
         $visitReport->setReportingDate($row['reporting_date']);
         $visitReport->setAssessment($row['assessment']);
         $visitReport->setPurpose($row['purpose']);
